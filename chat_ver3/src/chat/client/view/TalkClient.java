@@ -45,7 +45,6 @@ public class TalkClient extends JFrame implements ActionListener {
 	JButton jbtn_exit       = new JButton("나가기");
 	JButton jbtn_invite     = new JButton("초대하기");
 	
-	
 
 	public TalkClient (UserMainFrame umf, String chatroom_code, String user_id, String user_name) {
 		

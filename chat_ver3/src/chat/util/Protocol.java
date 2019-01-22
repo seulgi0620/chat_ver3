@@ -19,7 +19,6 @@ public class Protocol {
 	final public static String user_connect = "111";
 	final public static String chatroom_connect = "222";
 	final public static String overlap = "333";
-	final public static String logout = "444";
 	
 	public static String msg(String chatroom_code, String protocol, String user_id, String msg) {
 		

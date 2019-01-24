@@ -19,6 +19,7 @@ public class Protocol {
 	final public static String user_connect = "111";
 	final public static String invite_user = "600";
 	final public static String search_friend = "222";
+	final public static String myfriend = "333";
 	
 	public static String msg(String chatroom_code, String protocol, String user_id, String msg) {
 		

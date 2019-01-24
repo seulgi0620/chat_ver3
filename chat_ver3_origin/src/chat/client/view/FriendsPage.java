@@ -2,12 +2,14 @@ package chat.client.view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Vector;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,8 +24,8 @@ import javax.swing.table.JTableHeader;
 import chat.client.event.CreatingRoom;
 import chat.client.event.SearchFriend;
 import chat.client.method.MemLogic;
-import chat.server.method.FriendsTable;
 import chat.util.DBConnectionMgr;
+import chat.util.Protocol;
 
 @SuppressWarnings("serial")
 public class FriendsPage extends JPanel implements ActionListener {
@@ -60,6 +62,11 @@ public class FriendsPage extends JPanel implements ActionListener {
 	public JScrollPane myfriendsScroll = new JScrollPane(jt_myfriends, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
 			JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 	JTableHeader header = jt_myfriends.getTableHeader();
+	
+	public JPanel jp_myfriends = new JPanel();
+	
+	public Vector<String> friends_list = null;
+	
 
 	String cols_search[] = { "검색된 아이디", "이름" };
 	String data_search[][] = new String[0][1];
@@ -78,8 +85,17 @@ public class FriendsPage extends JPanel implements ActionListener {
 		this.user_id = m_ID;
 		jl_profile.addActionListener(this);
 
-		new FriendsTable(this, user_id);
+		//new FriendsTable(this, user_id);
 		initDisplay();
+		try {
+			System.out.println(Protocol.msg("myfriends", Protocol.myfriend, m_ID, "내친구찾아줘"));
+			System.out.println(umf.user_id);
+			this.umf.mnr.send(Protocol.msg("myfriends", Protocol.myfriend, m_ID, "내친구찾아줘"));
+			System.out.println("여기");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		//friends_list = new Vector<String>();
 
 		CreatingRoom er = new CreatingRoom(this);
 		jbtn_start_chat.addActionListener(er);
@@ -110,7 +126,12 @@ public class FriendsPage extends JPanel implements ActionListener {
 		jl_myName.setBounds(85, 65, 60, 30);
 		jl_myName.setFont(f);
 
-		myfriendsScroll.setBounds(10, 120, 365, 320);
+		//myfriendsScroll.setBounds(10, 120, 365, 320);
+		jp_myfriends.setLayout(new GridLayout(0,1));
+		jp_myfriends.setBounds(10, 120, 365, 320);
+		jp_myfriends.setBackground(Color.pink);
+		
+		
 		searchScroll.setBounds(10, 120, 365, 320);
 		jbt_add_friend.setBounds(60, 440, 120, 30);
 		header.setReorderingAllowed(false);

@@ -8,6 +8,8 @@ import java.util.Vector;
 
 import chat.client.view.FriendsPage;
 import chat.util.DBConnectionMgr;
+import chat.util.MyfriendsListVO;
+import chat.util.SearchTableVO;
 
 public class FriendsTable {
 	DBConnectionMgr dbMgr = new DBConnectionMgr();
@@ -17,18 +19,20 @@ public class FriendsTable {
 
 	FriendsPage fp = null;
 
-	public FriendsTable(FriendsPage fp,String m_ID) {
-		this.fp = fp;
-		fp.remove(fp.searchScroll);
-		fp.add(fp.myfriendsScroll);
-		
-		int row = fp.dtm_myfriends.getRowCount();
-		
-		if(row>0) {
-			for (int i = row- 1; i >= 0; i--) {
-				fp.dtm_myfriends.removeRow(i);
-			}}
-		
+	public Vector<MyfriendsListVO> search (String m_ID) {
+//		this.fp = fp;
+		//fp.remove(fp.searchScroll);
+//		fp.add(fp.jp_myfriends);
+//		
+//		int row = fp.dtm_myfriends.getRowCount();
+//		
+//		if(row>0) {
+//			for (int i = row- 1; i >= 0; i--) {
+//				fp.dtm_myfriends.removeRow(i);
+//			}}
+		Vector<String> v_s = new Vector<String>();
+		MyfriendsListVO mflvo = new MyfriendsListVO();
+		Vector<MyfriendsListVO> v_mflvo = new Vector<MyfriendsListVO>();
 		try {
 			
 			conn = dbMgr.getConnection("chat_ver2");
@@ -39,15 +43,15 @@ public class FriendsTable {
 			rs = pstm.executeQuery();
 			
 			while(rs.next()){
-				Vector<String> v_f = new Vector<String>();
 				String friend_name = rs.getString("friend_id");
-				v_f.add(friend_name);
-				fp.dtm_myfriends.addRow(v_f);
+				v_s.add(friend_name);
 			}
+			mflvo.setV_s(v_s);
+			v_mflvo.add(mflvo);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		return v_mflvo;
 	}
 
 	

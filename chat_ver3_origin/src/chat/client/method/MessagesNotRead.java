@@ -19,6 +19,7 @@ import chat.client.view.UserMainFrame;
 import chat.util.ChatLogVO;
 import chat.util.ChatroomListVO;
 import chat.util.InviteListVO;
+import chat.util.MyfriendsListVO;
 import chat.util.ParticipentVO;
 import chat.util.Protocol;
 import chat.util.SearchTableVO;
@@ -83,6 +84,7 @@ public class MessagesNotRead extends Thread{
 				Vector<ParticipentVO> ptv = null;
 				Vector<InviteListVO> ilv = null;
 				Vector<SearchTableVO> stb = null;
+				Vector<MyfriendsListVO> mfl = null;
 				
 				try {
 					
@@ -137,14 +139,13 @@ public class MessagesNotRead extends Thread{
 						}
 						else if(raw.firstElement() instanceof SearchTableVO) {
 							stb = (Vector<SearchTableVO>) raw;
-							for(int i=0; i<stb.get(0).getV_s().size(); i++) {
-								System.out.println(stb.get(0).getV_s().size());
-								System.out.println(stb.get(0).getV_s()+"i´Â? "+i);
-								
-								umf.friendspage.dtm_search.addRow(stb.get(0).getV_s());
-							}
+							System.out.println(stb.get(0).getV_s());
 							
-							//umf.friendspage.dtm_search.addRow(stb);
+						}
+						else if(raw.firstElement() instanceof MyfriendsListVO) {
+							mfl = (Vector<MyfriendsListVO>) raw;
+							System.out.println(mfl.get(0).getV_s());
+							
 						}
 
 					}						

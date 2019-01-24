@@ -51,6 +51,7 @@ public class SearchTable {
 				String user_name = rs.getString("user_name");
 				v_s.add(s_user_id);
 				v_s.add(user_name);
+				//v_s.add("|");
 				//stbvo.setUser_id(s_user_id);
 				//stbvo.setUser_name(user_name);
 				

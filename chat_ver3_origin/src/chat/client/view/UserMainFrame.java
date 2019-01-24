@@ -75,6 +75,8 @@ public class UserMainFrame extends JFrame implements ActionListener {
 		this.user_id = user_id;
 		this.user_name = user_name;
 		
+		access_network();
+		
 		friendspage   = new FriendsPage(this, user_id);
 		chatroompage  = new MyChatroomList2(this, user_id, user_name);
 		settingpage   = new SettingPage();
@@ -127,7 +129,7 @@ public class UserMainFrame extends JFrame implements ActionListener {
 	    setSize(450,650);
 	    setVisible(true);
 	    
-	    access_network();
+	    
 	    
 	    add(settingpage);
 		add(chatroompage);

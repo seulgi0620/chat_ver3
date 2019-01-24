@@ -206,6 +206,11 @@ public class TalkServerThread extends Thread {
 									this.send(stb.search(user_id, message));
 								}
 								
+								else if(Protocol.myfriend.equals(protocol)) {
+									FriendsTable ft = new FriendsTable();
+									this.send(ft.search(user_id));
+								}
+								
 								else {
 									InsertLog il = new InsertLog();
 									il.ins_log(chatroom_code, protocol, user_id, message, log_time);

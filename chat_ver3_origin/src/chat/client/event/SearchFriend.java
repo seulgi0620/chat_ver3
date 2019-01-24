@@ -27,7 +27,19 @@ public class SearchFriend implements ActionListener {
 				//new SearchTable(fp, fp.tf_search.getText());
 				try {
 					fp.umf.mnr.send(Protocol.msg("search_friend", Protocol.search_friend, fp.user_id, fp.tf_search.getText()));
-					System.out.println("이벤트감지1");
+					
+					
+					
+					fp.remove(fp.myfriendsScroll);
+					fp.add(fp.searchScroll);
+					
+					int row = fp.dtm_search.getRowCount();
+					if (row > 0) {
+						for (int i = row - 1; i >= 0; i--) {
+							fp.dtm_search.removeRow(i);
+						}
+					}
+					System.out.println(Protocol.msg("search_friend", Protocol.search_friend, fp.user_id, fp.tf_search.getText()));
 					
 				} catch (Exception e2) {
 					e2.printStackTrace();

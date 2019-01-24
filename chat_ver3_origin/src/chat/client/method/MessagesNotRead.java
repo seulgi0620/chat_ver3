@@ -9,16 +9,19 @@ import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 import java.util.Vector;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 import chat.client.view.MyChatroomList2;
 import chat.client.view.TalkClient;
 import chat.client.view.UserMainFrame;
-import chat.util.Protocol;
 import chat.util.ChatLogVO;
 import chat.util.ChatroomListVO;
 import chat.util.InviteListVO;
 import chat.util.ParticipentVO;
+import chat.util.Protocol;
+import chat.util.SearchTableVO;
 
 public class MessagesNotRead extends Thread{
 
@@ -79,6 +82,7 @@ public class MessagesNotRead extends Thread{
 				Vector<ChatLogVO> cl = null;
 				Vector<ParticipentVO> ptv = null;
 				Vector<InviteListVO> ilv = null;
+				Vector<SearchTableVO> stb = null;
 				
 				try {
 					
@@ -131,6 +135,17 @@ public class MessagesNotRead extends Thread{
 							}
 							
 						}
+						else if(raw.firstElement() instanceof SearchTableVO) {
+							stb = (Vector<SearchTableVO>) raw;
+							for(int i=0; i<stb.get(0).getV_s().size(); i++) {
+								System.out.println(stb.get(0).getV_s().size());
+								System.out.println(stb.get(0).getV_s()+"i´Â? "+i);
+								
+								umf.friendspage.dtm_search.addRow(stb.get(0).getV_s());
+							}
+							
+							//umf.friendspage.dtm_search.addRow(stb);
+						}
 
 					}						
 
@@ -173,9 +188,7 @@ public class MessagesNotRead extends Thread{
 							
 						}
 						
-						else if(Protocol.search_friend.equals(protocol)) {
-							System.out.println("¿Ô´ç~~");
-						}
+						
 						
 						Vector<String> chatroom_list = umf.chatroompage.chatroom_list;
 

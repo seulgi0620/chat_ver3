@@ -7,13 +7,7 @@ import java.net.Socket;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 import java.util.Vector;
-import chat.server.method.MessagesNotRead_Call;
-import chat.server.method.SelectChatList;
-import chat.server.method.SelectLog;
-import chat.server.method.ExitChatroom;
-import chat.client.view.FriendsPage;
-import chat.server.method.CreateChatroom;
-import chat.server.method.InsertLog;
+
 import chat.server.view.TalkServer;
 import chat.util.ChatroomListVO;
 import chat.util.Protocol;
@@ -32,7 +26,6 @@ public class TalkServerThread extends Thread {
 	Vector<TalkServerThread> chatList = null;
 	
 	TalkServer ts = null;
-	SearchTable stb = null;
 	
 	public TalkServerThread(TalkServer ts, Socket client, Vector<TalkServerThread> chatList) {
 		
@@ -208,12 +201,10 @@ public class TalkServerThread extends Thread {
 									}
 									
 								}
-//								else if(Protocol.search_friend.equals(protocol)) {
-//									System.out.println(msg);
-//									
-//									 stb = new SearchTable(msg,user_id);
-//									this.send(msg);
-//								}
+								else if(Protocol.search_friend.equals(protocol)) {
+									SearchTable stb = new SearchTable();
+									this.send(stb.search(user_id, message));
+								}
 								
 								else {
 									InsertLog il = new InsertLog();
@@ -255,13 +246,7 @@ public class TalkServerThread extends Thread {
 							}
 							
 						}
-						else if(obj instanceof FriendsPage) {
-							System.out.println("¿©±â");
-							
-							Vector<FriendsPage> v_fp = (Vector<FriendsPage>) obj;
-							 stb = new SearchTable(v_fp.get(0));
-							this.send(msg);
-						}
+						
 						
 						
 					} catch (ClassNotFoundException e) {

@@ -35,7 +35,7 @@ public class UserMainFrame extends JFrame implements ActionListener {
 	public JButton jb_setting;
 	public JButton jb_logout;
 	
-	Font f = new Font("¸¼Àº °íµñ", Font.PLAIN, 13);
+	Font f = new Font("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½", Font.PLAIN, 13);
 	
 	ImageIcon img  = new ImageIcon("src/chat/imgs/friend.png");
 	ImageIcon img2 = new ImageIcon("src/chat/imgs/chat.png");
@@ -49,7 +49,7 @@ public class UserMainFrame extends JFrame implements ActionListener {
 	
 	public MessagesNotRead mnr = null;
 	
-	String ip = "192.168.0.37";
+	String ip = "192.168.0.8";
 	int port  = 30001;
 	
 	public void access_network() {
@@ -60,7 +60,7 @@ public class UserMainFrame extends JFrame implements ActionListener {
 			oos = new ObjectOutputStream(mySocket.getOutputStream());
 			ois = new ObjectInputStream (mySocket.getInputStream ());
 			
-			oos.writeObject(Protocol.msg("No_chatroom_code", Protocol.user_connect, user_id, "·Î±×ÀÎ¾²"));
+			oos.writeObject(Protocol.msg("No_chatroom_code", Protocol.user_connect, user_id, "ï¿½Î±ï¿½ï¿½Î¾ï¿½"));
 			
 			mnr = new MessagesNotRead(this);
 			mnr.start();

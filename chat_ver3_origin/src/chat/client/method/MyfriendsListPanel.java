@@ -20,8 +20,9 @@ public class MyfriendsListPanel {
 	public JLabel jl_friendName = new JLabel();
 	Vector<MyfriendsListVO> mflvo = null;
 
-	public MyfriendsListPanel() {
+	public MyfriendsListPanel(FriendsPage fp) {
 		mflvo = new Vector<MyfriendsListVO>();
+		initDisplay(fp);
 	}
 	
 	public MyfriendsListPanel(Vector<MyfriendsListVO> mflvo) {
@@ -38,13 +39,12 @@ public class MyfriendsListPanel {
 			vv = new Vector<MyfriendsListVO>();
 		}
 		
-		fp.friends_list.removeAllElements();
+		//fp.friends_list.removeAllElements();
 		FriendsPage.friends_map.clear();
 		fp.jp_myfriends.removeAll();
 		
 		for(int i=0;i<mflvo.size();i++) {
 			JPanel jp_friendsList = new JPanel();
-			new JPanel();
 			jp_friendsList.add(jl_friendName);
 			jp_friendsList.setSize(365,30);
 			jp_friendsList.setBackground(Color.cyan);
@@ -53,7 +53,6 @@ public class MyfriendsListPanel {
 			jl_friendName.setOpaque(true);
 			
 			FriendsPage.friends_map.put(vv.get(i).getFriendName(), jp_friendsList);
-			System.out.println("¿©±â" + vv.get(0).getFriendName());
 			fp.friends_list.add(vv.get(i).getFriendName());
 
 			fp.jp_myfriends.add(FriendsPage.friends_map.get(vv.get(i).getFriendName()));

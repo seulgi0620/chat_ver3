@@ -217,8 +217,7 @@ public class TalkServerThread extends Thread {
 										v_friendsName.add(v_flvo.get(p).getFriendName());
 									}
 									send(Protocol.msg(v_flvo));
-									System.out.println(Protocol.msg(v_flvo));
-								}
+								break;}
 								
 								else {
 									InsertLog il = new InsertLog();

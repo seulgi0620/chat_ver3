@@ -97,6 +97,7 @@ public class FriendsPage extends JPanel implements ActionListener {
 				e.printStackTrace();
 			}
 		//friends_list = new Vector<String>();
+		mflp = new MyfriendsListPanel(this);
 
 		CreatingRoom er = new CreatingRoom(this);
 		jbtn_start_chat.addActionListener(er);
@@ -128,7 +129,7 @@ public class FriendsPage extends JPanel implements ActionListener {
 		jl_myName.setFont(f);
 
 		//myfriendsScroll.setBounds(10, 120, 365, 320);
-		mflp = new MyfriendsListPanel();
+		
 		//jp_myfriends.setLayout(new GridLayout(6,1));
 		jsp_myfriends.setBounds(10, 120, 365, 320);
 		this.add(jsp_myfriends);

@@ -145,13 +145,14 @@ public class MessagesNotRead extends Thread{
 						else if(raw.firstElement() instanceof MyfriendsListVO) {
 							mflv = (Vector<MyfriendsListVO>) raw;
 							umf.friendspage.mflp = new MyfriendsListPanel(mflv);
+							System.out.println("¿©±â"+mflv);
 							umf.friendspage.mflp.initDisplay(umf.friendspage);
 							umf.friendspage.jsp_myfriends.setViewportView(umf.friendspage.jp_myfriends);
 							umf.repaint();
 							umf.revalidate();
 							
 							
-							
+							break;
 						}
 
 					}						

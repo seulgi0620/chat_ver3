@@ -29,8 +29,7 @@ public class FriendsTable {
 //			for (int i = row- 1; i >= 0; i--) {
 //				fp.dtm_myfriends.removeRow(i);
 //			}}
-		Vector<String> v_s = new Vector<String>();
-		MyfriendsListVO mflvo = new MyfriendsListVO();
+		//MyfriendsListVO mflvo = new MyfriendsListVO();
 		Vector<MyfriendsListVO> v_mflvo = new Vector<MyfriendsListVO>();
 		try {
 			
@@ -42,11 +41,11 @@ public class FriendsTable {
 			rs = pstm.executeQuery();
 			
 			while(rs.next()){
+				MyfriendsListVO mflvo = new MyfriendsListVO();
 				String friend_name = rs.getString("friend_id");
-				v_s.add(friend_name);
+				mflvo.setFriendName(friend_name);
+				v_mflvo.add(mflvo);
 			}
-			mflvo.setV_s(v_s);
-			v_mflvo.add(mflvo);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

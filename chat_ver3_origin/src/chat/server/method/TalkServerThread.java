@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import chat.server.view.TalkServer;
 import chat.util.ChatroomListVO;
+import chat.util.MyfriendsListVO;
 import chat.util.Protocol;
 
 public class TalkServerThread extends Thread {
@@ -21,6 +22,8 @@ public class TalkServerThread extends Thread {
 	
 	public Vector<String> vc_chatroom_code = null;
 	public String chatroom_code = null;
+	
+	public Vector<String> v_friendsName = null;
 	
 	Socket client = null;
 	Vector<TalkServerThread> chatList = null;
@@ -208,7 +211,13 @@ public class TalkServerThread extends Thread {
 								
 								else if(Protocol.myfriend.equals(protocol)) {
 									FriendsTable ft = new FriendsTable();
-									this.send(ft.search(user_id));
+									Vector<MyfriendsListVO> v_flvo = ft.search(user_id);
+									v_friendsName = new Vector<String>();
+									for(int p=0;p<v_flvo.size();p++) {
+										v_friendsName.add(v_flvo.get(p).getFriendName());
+									}
+									send(Protocol.msg(v_flvo));
+									System.out.println(Protocol.msg(v_flvo));
 								}
 								
 								else {

@@ -9,7 +9,6 @@ import java.util.Vector;
 import chat.client.view.FriendsPage;
 import chat.util.DBConnectionMgr;
 import chat.util.MyfriendsListVO;
-import chat.util.SearchTableVO;
 
 public class FriendsTable {
 	DBConnectionMgr dbMgr = new DBConnectionMgr();

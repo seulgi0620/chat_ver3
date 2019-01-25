@@ -83,8 +83,8 @@ public class MessagesNotRead extends Thread{
 				Vector<ChatLogVO> cl = null;
 				Vector<ParticipentVO> ptv = null;
 				Vector<InviteListVO> ilv = null;
-				Vector<SearchTableVO> stb = null;
-				Vector<MyfriendsListVO> mfl = null;
+				Vector<SearchTableVO> stbv = null;
+				Vector<MyfriendsListVO> mflv = null;
 				
 				try {
 					
@@ -138,13 +138,19 @@ public class MessagesNotRead extends Thread{
 							
 						}
 						else if(raw.firstElement() instanceof SearchTableVO) {
-							stb = (Vector<SearchTableVO>) raw;
-							System.out.println(stb.get(0).getV_s());
+							stbv = (Vector<SearchTableVO>) raw;
+							System.out.println(stbv.get(0).getV_s());
 							
 						}
 						else if(raw.firstElement() instanceof MyfriendsListVO) {
-							mfl = (Vector<MyfriendsListVO>) raw;
-							System.out.println(mfl.get(0).getV_s());
+							mflv = (Vector<MyfriendsListVO>) raw;
+							umf.friendspage.mflp = new MyfriendsListPanel(mflv);
+							umf.friendspage.mflp.initDisplay(umf.friendspage);
+							umf.friendspage.jsp_myfriends.setViewportView(umf.friendspage.jp_myfriends);
+							umf.repaint();
+							umf.revalidate();
+							
+							
 							
 						}
 

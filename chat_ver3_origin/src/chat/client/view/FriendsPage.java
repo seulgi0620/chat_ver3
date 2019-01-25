@@ -2,13 +2,13 @@ package chat.client.view;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -24,13 +24,16 @@ import javax.swing.table.JTableHeader;
 import chat.client.event.CreatingRoom;
 import chat.client.event.SearchFriend;
 import chat.client.method.MemLogic;
+import chat.client.method.MyfriendsListPanel;
 import chat.util.DBConnectionMgr;
 import chat.util.Protocol;
 
 @SuppressWarnings("serial")
 public class FriendsPage extends JPanel implements ActionListener {
 
+	
 	public UserMainFrame umf = null;
+	public MyfriendsListPanel mflp = null;
 
 	public String user_id = null;
 	public String user_name = null;
@@ -64,11 +67,11 @@ public class FriendsPage extends JPanel implements ActionListener {
 	JTableHeader header = jt_myfriends.getTableHeader();
 	
 	public JPanel jp_myfriends = new JPanel();
-	
+	public JScrollPane jsp_myfriends = new JScrollPane(jp_myfriends);
+	public static HashMap<String, JPanel> friends_map = new HashMap<String, JPanel>();
 	public Vector<String> friends_list = null;
-	
 
-	String cols_search[] = { "검색된 아이디", "이름" };
+	String cols_search[] = { "검색된 아이디", "이름"};
 	String data_search[][] = new String[0][1];
 	public DefaultTableModel dtm_search = new DefaultTableModel(data_search, cols_search);
 	public JTable jt_search = new JTable(dtm_search);
@@ -89,9 +92,7 @@ public class FriendsPage extends JPanel implements ActionListener {
 		initDisplay();
 		try {
 			System.out.println(Protocol.msg("myfriends", Protocol.myfriend, m_ID, "내친구찾아줘"));
-			System.out.println(umf.user_id);
 			this.umf.mnr.send(Protocol.msg("myfriends", Protocol.myfriend, m_ID, "내친구찾아줘"));
-			System.out.println("여기");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -127,9 +128,10 @@ public class FriendsPage extends JPanel implements ActionListener {
 		jl_myName.setFont(f);
 
 		//myfriendsScroll.setBounds(10, 120, 365, 320);
-		jp_myfriends.setLayout(new GridLayout(0,1));
-		jp_myfriends.setBounds(10, 120, 365, 320);
-		jp_myfriends.setBackground(Color.pink);
+		mflp = new MyfriendsListPanel();
+		//jp_myfriends.setLayout(new GridLayout(6,1));
+		jsp_myfriends.setBounds(10, 120, 365, 320);
+		this.add(jsp_myfriends);
 		
 		
 		searchScroll.setBounds(10, 120, 365, 320);

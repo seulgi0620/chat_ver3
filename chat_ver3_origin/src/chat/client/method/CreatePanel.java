@@ -69,13 +69,13 @@ public class CreatePanel {
 		    
 		    JLabel jlb_profile = new JLabel();
 		    jlb_profile.setName("inner3_label_profile");
-		    JLabel jlb_chatmem = new JLabel("Âü¿©ÀÚ¸ñ·Ï");
+		    JLabel jlb_chatmem = new JLabel("ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½");
 		    jlb_chatmem.setName("inner3_label_chatmem");
-		    JLabel jlb_chatchat = new JLabel("Ã¤ÆÃ³»¿ë");
+		    JLabel jlb_chatchat = new JLabel("Ã¤ï¿½Ã³ï¿½ï¿½ï¿½");
 		    jlb_chatchat.setName("inner3_label_chatchat");
-		    JLabel jlb_time = new JLabel("½Ã°£");
+		    JLabel jlb_time = new JLabel("ï¿½Ã°ï¿½");
 		    jlb_time.setName("inner3_label_time");
-		    JLabel jlb_noread_no = new JLabel("¼ýÀÚ");
+		    JLabel jlb_noread_no = new JLabel("ï¿½ï¿½ï¿½ï¿½");
 		    jlb_noread_no.setName("inner3_label_noreadno");
 			
 		    jp_chatlist.setLayout(new BorderLayout(0,0));

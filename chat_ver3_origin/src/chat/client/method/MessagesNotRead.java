@@ -145,7 +145,6 @@ public class MessagesNotRead extends Thread{
 						else if(raw.firstElement() instanceof MyfriendsListVO) {
 							mflv = (Vector<MyfriendsListVO>) raw;
 							umf.friendspage.mflp = new MyfriendsListPanel(mflv);
-							System.out.println("¿©±â"+mflv);
 							umf.friendspage.mflp.initDisplay(umf.friendspage);
 							umf.friendspage.jsp_myfriends.setViewportView(umf.friendspage.jp_myfriends);
 							umf.repaint();
@@ -181,7 +180,7 @@ public class MessagesNotRead extends Thread{
 						} else if(Protocol.create_room.equals(protocol)) {
 							
 							if(message.equals("me")) {
-								TalkClient tc = new TalkClient(umf, chatroom_code, user_id, "¤»¤»;");
+								TalkClient tc = new TalkClient(umf, chatroom_code, user_id, "ï¿½ï¿½ï¿½ï¿½;");
 								umf.chatroompage.tc_map.put(chatroom_code, tc);
 								
 								Protocol.onair_chatroom.add(chatroom_code);

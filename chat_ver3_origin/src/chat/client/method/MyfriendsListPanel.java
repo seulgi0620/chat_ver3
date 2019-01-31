@@ -1,6 +1,8 @@
 package chat.client.method;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.Vector;
 
@@ -13,16 +15,16 @@ import chat.util.MyfriendsListVO;
 
 public class MyfriendsListPanel {
 	
-	int rows = 0;
+	int rows = 6;
 	
 	FriendsPage fp = null;
 	 
-	public JLabel jl_friendName = new JLabel();
+	public JLabel jl_friendName = null;
 	Vector<MyfriendsListVO> mflvo = null;
 
-	public MyfriendsListPanel(FriendsPage fp) {
+	public MyfriendsListPanel() {
 		mflvo = new Vector<MyfriendsListVO>();
-		initDisplay(fp);
+		//initDisplay(fp);
 	}
 	
 	public MyfriendsListPanel(Vector<MyfriendsListVO> mflvo) {
@@ -45,9 +47,9 @@ public class MyfriendsListPanel {
 		
 		for(int i=0;i<mflvo.size();i++) {
 			JPanel jp_friendsList = new JPanel();
+			jp_friendsList.setLayout(new FlowLayout());
+			jl_friendName = new JLabel();
 			jp_friendsList.add(jl_friendName);
-			jp_friendsList.setSize(365,30);
-			jp_friendsList.setBackground(Color.cyan);
 			
 			jl_friendName.setText(String.valueOf(vv.get(i).getFriendName()));
 			jl_friendName.setOpaque(true);

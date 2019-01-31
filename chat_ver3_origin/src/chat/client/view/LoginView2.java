@@ -24,19 +24,19 @@ public class LoginView2 extends JFrame {
 	MemLogic ml = new MemLogic();
 	JoinView jv = new JoinView();
 
-	JButton jb_fid = new JButton("¾ÆÀÌµğ Ã£±â");
-	JButton jb_fpw = new JButton("ºñ¹Ğ¹øÈ£ Ã£±â");
+	JButton jb_fid = new JButton("ì•„ì´ë”” ì°¾ê¸°");
+	JButton jb_fpw = new JButton("ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°");
 
 	JFrame login = new JFrame();
 
 	JPanel jp_login = new JPanel();
 	JPanel jp_join = new JPanel();
 	JTextField jtf_input = new JTextField();
-	JButton jb_login = new JButton("·Î±×ÀÎ");
-	JButton jb_join = new JButton("È¸¿ø°¡ÀÔ");
+	JButton jb_login = new JButton("ë¡œê·¸ì¸");
+	JButton jb_join = new JButton("íšŒì›ê°€ì…");
 
-	JLabel jl_id = new JLabel("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
-	JLabel jl_pw = new JLabel("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+	JLabel jl_id = new JLabel("ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
+	JLabel jl_pw = new JLabel("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”");
 	JTextField tf_id = new JTextField();
 	JPasswordField tf_pw = new JPasswordField();
 
@@ -64,11 +64,11 @@ public class LoginView2 extends JFrame {
 		login.setTitle("Ver0.1");
 		
 		jl_logo.setBounds(140, 80, 150, 45);
-		jl_logo.setFont(new Font("HY¿±¼­L", Font.BOLD, 30));
+		jl_logo.setFont(new Font("HYì—½ì„œL", Font.BOLD, 30));
 		jl_logo.setForeground(new Color(248, 136, 137));
 		jp_login.add(jl_logo);
 		jl_logo2.setBounds(155, 110, 100, 45);
-		jl_logo2.setFont(new Font("HY¿±¼­L", Font.BOLD, 30));
+		jl_logo2.setFont(new Font("HYì—½ì„œL", Font.BOLD, 30));
 		jl_logo2.setForeground(new Color(248, 136, 137));
 		jp_login.add(jl_logo2);
 		imgBox = new JLabel(img);
@@ -81,9 +81,9 @@ public class LoginView2 extends JFrame {
 		jl_pw.setBounds(85, 280, 250, 45);
 		jp_login.add(jl_id);
 		jp_login.add(jl_pw);
-		jl_id.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 13));
+		jl_id.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 13));
 		jl_id.setForeground(Color.LIGHT_GRAY);
-		jl_pw.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 13));
+		jl_pw.setFont(new Font("ë§‘ì€ ê³ ë”•", Font.PLAIN, 13));
 		jl_pw.setForeground(Color.LIGHT_GRAY);
 		tf_id.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		tf_pw.setBorder(javax.swing.BorderFactory.createEmptyBorder());
@@ -146,9 +146,9 @@ public class LoginView2 extends JFrame {
 							UserMainFrame mf = new UserMainFrame(tf_id.getText(), str);
 							mf.setVisible(true);
 						} else if(ml.Login(tf_id.getText(), String.valueOf(tf_pw.getPassword()))==2) {
-							JOptionPane.showMessageDialog(login, "ºñ¹Ğ¹øÈ£°¡ Àß¸øµÇ¾ú½À´Ï´Ù."," ",JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(login, "ë¹„ë°€ë²ˆí˜¸ê°€ ì˜ëª»ë˜ì—ˆìŠµë‹ˆë‹¤."," ",JOptionPane.INFORMATION_MESSAGE);
 						} else if(ml.Login(tf_id.getText(),String.valueOf(tf_pw.getPassword()))==0){
-							JOptionPane.showMessageDialog(login, "Á¸Àç ÇÏÁö ¾Ê´Â ¾ÆÀÌµğÀÔ´Ï´Ù"," ",JOptionPane.INFORMATION_MESSAGE);
+							JOptionPane.showMessageDialog(login, "ì¡´ì¬ í•˜ì§€ ì•ŠëŠ” ì•„ì´ë””ì…ë‹ˆë‹¤"," ",JOptionPane.INFORMATION_MESSAGE);
 						}
 					}
 				} catch(Exception ea) {

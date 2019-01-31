@@ -239,7 +239,7 @@ public class TalkServerThread extends Thread {
 								CreateChatroom ccr = new CreateChatroom();
 								
 								for(int i=0;i<vc_str.size();i++) {
-									chatroom_code = ccr.create_chatroom(this.user_id, Protocol.enter_room, "´ÔÀÌ ÀÔÀåÇÏ¼Ì½À´Ï´Ù.", vc_str.get(i));
+									chatroom_code = ccr.create_chatroom(this.user_id, Protocol.enter_room, "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¼Ì½ï¿½ï¿½Ï´ï¿½.", vc_str.get(i));
 									for(int j=0;j<chatList.size();j++) {
 										if(chatList.elementAt(j).user_id.equals(this.user_id) || chatList.elementAt(j).user_id.equals(vc_str.elementAt(i))) {
 											if(chatList.elementAt(j).user_id.equals(this.user_id)) {

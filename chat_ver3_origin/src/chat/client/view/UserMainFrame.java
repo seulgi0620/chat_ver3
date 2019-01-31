@@ -35,7 +35,7 @@ public class UserMainFrame extends JFrame implements ActionListener {
 	public JButton jb_setting;
 	public JButton jb_logout;
 	
-	Font f = new Font("���� ���", Font.PLAIN, 13);
+	Font f = new Font("맑은 고딕", Font.PLAIN, 13);
 	
 	ImageIcon img  = new ImageIcon("src/chat/imgs/friend.png");
 	ImageIcon img2 = new ImageIcon("src/chat/imgs/chat.png");
@@ -49,7 +49,7 @@ public class UserMainFrame extends JFrame implements ActionListener {
 	
 	public MessagesNotRead mnr = null;
 	
-	String ip = "192.168.0.8";
+	String ip = "192.168.0.37";
 	int port  = 30001;
 	
 	public void access_network() {
@@ -60,7 +60,7 @@ public class UserMainFrame extends JFrame implements ActionListener {
 			oos = new ObjectOutputStream(mySocket.getOutputStream());
 			ois = new ObjectInputStream (mySocket.getInputStream ());
 			
-			oos.writeObject(Protocol.msg("No_chatroom_code", Protocol.user_connect, user_id, "�α��ξ�"));
+			oos.writeObject(Protocol.msg("No_chatroom_code", Protocol.user_connect, user_id, "로그인쓰"));
 			
 			mnr = new MessagesNotRead(this);
 			mnr.start();
@@ -76,7 +76,6 @@ public class UserMainFrame extends JFrame implements ActionListener {
 		this.user_name = user_name;
 		
 		access_network();
-		
 		friendspage   = new FriendsPage(this, user_id);
 		chatroompage  = new MyChatroomList2(this, user_id, user_name);
 		settingpage   = new SettingPage();
@@ -128,7 +127,6 @@ public class UserMainFrame extends JFrame implements ActionListener {
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    setSize(450,650);
 	    setVisible(true);
-	    
 	    
 	    
 	    add(settingpage);

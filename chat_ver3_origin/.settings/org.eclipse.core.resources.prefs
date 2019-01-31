@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
-encoding/<project>=EUC-KR
+encoding//src/chat/client/view/UserMainFrame.java=UTF-8
+encoding//src/chat/util/DBConnectionMgr.java=UTF-8
+encoding/<project>=UTF-8

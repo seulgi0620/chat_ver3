@@ -5,13 +5,10 @@ import java.util.Vector;
 
 @SuppressWarnings("serial")
 public class SearchTableVO implements Serializable{
-	
 	String search_text = "";
 	Vector<String> v_s = null;
-	String user_id = null;
-	String user_name = null;
-	
-	
+	String user_id = "";
+	String user_name = "";
 	public String getSearch_text() {
 		return search_text;
 	}

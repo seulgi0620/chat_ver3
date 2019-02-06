@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.NoSuchElementException;
 import java.util.StringTokenizer;
 import java.util.Vector;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -17,13 +18,13 @@ import chat.client.view.LoginView2;
 import chat.client.view.MyChatroomList2;
 import chat.client.view.TalkClient2;
 import chat.client.view.UserMainFrame;
-import chat.util.Protocol;
-import chat.util.SearchTableVO;
 import chat.util.ChatLogVO;
 import chat.util.ChatroomListVO;
 import chat.util.InviteListVO;
 import chat.util.MyfriendsListVO;
 import chat.util.ParticipentVO;
+import chat.util.Protocol;
+import chat.util.SearchTableVO;
 
 public class MessagesNotRead extends Thread{
 
@@ -142,11 +143,6 @@ public class MessagesNotRead extends Thread{
 							}
 							
 						}
-						else if(raw.firstElement() instanceof SearchTableVO) {
-							stbv = (Vector<SearchTableVO>) raw;
-							System.out.println(stbv.get(0).getV_s());
-							
-						}
 						else if(raw.firstElement() instanceof MyfriendsListVO) {
 							mflv = (Vector<MyfriendsListVO>) raw;
 							umf.friendspage.mflp = new MyfriendsListPanel(mflv);
@@ -154,11 +150,16 @@ public class MessagesNotRead extends Thread{
 							umf.friendspage.jsp_myfriends.setViewportView(umf.friendspage.jp_myfriends);
 							umf.repaint();
 							umf.revalidate();
-							
-							
-							break;
 						}
-						
+						else if(raw.firstElement() instanceof SearchTableVO) {
+							stbv = (Vector<SearchTableVO>) raw;
+							umf.friendspage.sflp = new SearchFriendsListPanel(stbv);
+							umf.friendspage.sflp.initDisplay(umf.friendspage);
+							umf.friendspage.jsp_myfriends.setViewportView(umf.friendspage.jp_myfriends);
+							umf.repaint();
+							umf.revalidate();
+							
+						}
 						
 
 					}						

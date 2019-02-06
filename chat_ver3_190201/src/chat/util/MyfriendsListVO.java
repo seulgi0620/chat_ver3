@@ -6,6 +6,7 @@ import java.util.Vector;
 @SuppressWarnings("serial")
 public class MyfriendsListVO implements Serializable{
 	String friendName = "";
+	String friendID = "";
 	Vector<String> v_s = null;
 	public String getFriendName() {
 		return friendName;
@@ -21,5 +22,13 @@ public class MyfriendsListVO implements Serializable{
 
 	public void setV_s(Vector<String> v_s) {
 		this.v_s = v_s;
+	}
+
+	public String getFriendID() {
+		return friendID;
+	}
+
+	public void setFriendID(String friendID) {
+		this.friendID = friendID;
 	}
 }

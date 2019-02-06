@@ -2,9 +2,10 @@ package chat.client.event;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import chat.client.method.SearchAddFriend;
-import chat.client.method.SearchTable;
 import chat.client.view.FriendsPage;
+import chat.util.Protocol;
 
 public class SearchFriend implements ActionListener {
 
@@ -19,7 +20,11 @@ public class SearchFriend implements ActionListener {
 		
 		if(fp!=null) {
 			if (src == fp.tf_search) {
-				new SearchTable(fp, fp.tf_search.getText());
+				try {
+					fp.umf.mnr.send(Protocol.msg("SearchFriends", Protocol.search_friend, fp.user_id, fp.tf_search.getText()));
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
 			}
 			
 			else if (src == fp.jbt_add_friend) {

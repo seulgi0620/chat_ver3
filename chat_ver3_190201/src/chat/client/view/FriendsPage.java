@@ -26,6 +26,7 @@ import chat.client.event.CreatingRoom;
 import chat.client.event.SearchFriend;
 import chat.client.method.MemLogic;
 import chat.client.method.MyfriendsListPanel;
+import chat.client.method.SearchFriendsListPanel;
 import chat.util.DBConnectionMgr;
 import chat.util.Protocol;
 
@@ -35,6 +36,7 @@ public class FriendsPage extends JPanel implements ActionListener {
 	
 	public UserMainFrame umf = null;
 	public MyfriendsListPanel mflp = null;
+	public SearchFriendsListPanel sflp = null;
 
 	public String user_id = null;
 	public String user_name = null;
@@ -71,6 +73,9 @@ public class FriendsPage extends JPanel implements ActionListener {
 	public JScrollPane jsp_myfriends = null;
 	public static HashMap<String, JPanel> friends_map = new HashMap<String, JPanel>();
 	public Vector<String> friends_list = null;
+	
+	public static HashMap<String, JPanel> searchFriends_map = new HashMap<String, JPanel>();
+	public Vector<String> searchFriends_list = null;
 
 	String cols_search[] = {"검색된 아이디","이름"};
 	String data_search[][] = new String[0][1];
@@ -97,8 +102,10 @@ public class FriendsPage extends JPanel implements ActionListener {
 		friends_list = new Vector<String>();
 		mflp = new MyfriendsListPanel();
 		
+		searchFriends_list = new Vector<String>();
+		sflp = new SearchFriendsListPanel();
+		
 		try {
-			System.out.println(Protocol.msg("myfriends", Protocol.myfriend, m_ID, "친구 찾아줘"));
 			this.umf.mnr.send(Protocol.msg("myfriends", Protocol.myfriend, m_ID, "친구 찾아줘"));
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -42,8 +42,8 @@ public class FriendsTable {
 			
 			while(rs.next()){
 				MyfriendsListVO mflvo = new MyfriendsListVO();
-				String friend_name = rs.getString("friend_id");
-				mflvo.setFriendName(friend_name);
+				String friend_id = rs.getString("friend_id");
+				mflvo.setFriendID(friend_id);
 				v_mflvo.add(mflvo);
 			}
 		} catch (SQLException e) {

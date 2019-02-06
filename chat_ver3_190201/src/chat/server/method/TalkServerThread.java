@@ -12,6 +12,7 @@ import chat.server.view.TalkServer;
 import chat.util.ChatroomListVO;
 import chat.util.MyfriendsListVO;
 import chat.util.Protocol;
+import chat.util.SearchTableVO;
 
 public class TalkServerThread extends Thread {
 
@@ -23,7 +24,8 @@ public class TalkServerThread extends Thread {
 	public Vector<String> vc_chatroom_code = null;
 	public String chatroom_code = null;
 
-	public Vector<String> v_friendsName = null;
+	public Vector<String> v_friendsID = null;
+	public Vector<String> v_searchID = null;
 
 	Socket client = null;
 	Vector<TalkServerThread> chatList = null;
@@ -218,20 +220,25 @@ public class TalkServerThread extends Thread {
 
 									}
 
-								} else if (Protocol.search_friend.equals(protocol)) {
-									SearchTable stb = new SearchTable();
-									this.send(stb.search(user_id, message));
-								}
-
+								} 
 								else if (Protocol.myfriend.equals(protocol)) {
 									FriendsTable ft = new FriendsTable();
 									Vector<MyfriendsListVO> v_flvo = ft.search(user_id);
-									v_friendsName = new Vector<String>();
+									v_friendsID = new Vector<String>();
 									for (int p = 0; p < v_flvo.size(); p++) {
-										v_friendsName.add(v_flvo.get(p).getFriendName());
+										v_friendsID.add(v_flvo.get(p).getFriendID());
 									}
 									send(Protocol.msg(v_flvo));
-									break;
+									
+								}
+								else if (Protocol.search_friend.equals(protocol)) {
+									SearchTable stb = new SearchTable();
+									Vector<SearchTableVO> v_stvo = stb.search(user_id,message);
+									v_searchID = new Vector<String>();
+									for (int p = 0; p < v_stvo.size(); p++) {
+										v_searchID.add(v_stvo.get(p).getUser_id());
+									}
+									send(Protocol.msg(v_stvo));
 								}
 
 								else {

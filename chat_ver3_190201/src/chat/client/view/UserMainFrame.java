@@ -49,7 +49,7 @@ public class UserMainFrame extends JFrame implements ActionListener {
 	
 	public MessagesNotRead mnr = null;
 	
-	String ip = "192.168.0.37";
+	String ip = "192.168.0.8";
 	int port  = 30001;
 	
 	public void access_network() {

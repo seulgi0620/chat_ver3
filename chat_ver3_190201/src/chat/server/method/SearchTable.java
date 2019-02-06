@@ -19,6 +19,7 @@ public class SearchTable {
 	FriendsPage fp = null;
 	
 	public Vector<SearchTableVO> search (String user_id, String s_ID) {
+		
 //		this.fp = fp;
 //		
 //		fp.remove(fp.myfriendsScroll);
@@ -30,13 +31,12 @@ public class SearchTable {
 //				fp.dtm_search.removeRow(i);
 //			}
 //		}
-		Vector<String> v_s = new Vector<String>();
-		SearchTableVO stbvo = new SearchTableVO();
+		//Vector<String> v_s = new Vector<String>();
+		//SearchTableVO stbvo = new SearchTableVO();
 		Vector<SearchTableVO> v_stbvo = new Vector<SearchTableVO>();
 		try {
 
 			conn = dbMgr.getConnection("chat_ver2");
-
 			String sql = "  select user_id, user_name from chat_user  " + "  where user_id like '%' || ? || '%'  "
 					+ "  and user_id != ?  " + "  minus  " + "  select friend_id , friend_name from chat_friend "
 					+ "  where user_id= ? ";
@@ -45,27 +45,16 @@ public class SearchTable {
 			pstm.setString(2, user_id);
 			pstm.setString(3, user_id);
 			rs = pstm.executeQuery();
-
 			while (rs.next()) {
+				SearchTableVO stbvo = new SearchTableVO();
 				String s_user_id = rs.getString("user_id");
-				String user_name = rs.getString("user_name");
-				v_s.add(s_user_id);
-				v_s.add(user_name);
-				//v_s.add("|");
-				//stbvo.setUser_id(s_user_id);
-				//stbvo.setUser_name(user_name);
-				
-				//fp.dtm_search.addRow(v_s);
+				stbvo.setUser_id(s_user_id);
+				v_stbvo.add(stbvo);
 			}
-			stbvo.setV_s(v_s);
-			v_stbvo.add(stbvo);
-
 		} catch (SQLException sqle) {
-			System.out.println("SELECT문에서 예외 발생");
 			sqle.printStackTrace();
 		}
 		return v_stbvo;
-		
 	}
 	
 	

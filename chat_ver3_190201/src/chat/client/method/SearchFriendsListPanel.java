@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.Vector;
 
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -18,8 +19,9 @@ public class SearchFriendsListPanel{
 	int rows = 10;
 
 	public FriendsPage fp = null;
-	public JLabel jl_friendName = null;
+	public JLabel jl_friendID = null;
 	Vector<SearchTableVO> stbvo = null;
+	public JCheckBox jcb_friendID = null;
 
 	public SearchFriendsListPanel() {
 		stbvo = new Vector<SearchTableVO>();
@@ -51,11 +53,14 @@ public class SearchFriendsListPanel{
 			jp_friendsList.setBackground(Color.pink);
 			Border bd = new LineBorder(Color.BLACK);
 			jp_friendsList.setBorder(bd);
-			jl_friendName = new JLabel();
-			jp_friendsList.add(jl_friendName);
+			jl_friendID = new JLabel();
+			jp_friendsList.add(jl_friendID);
+			
+			jcb_friendID = new JCheckBox();
+			jp_friendsList.add(jcb_friendID);
 
-			jl_friendName.setText(String.valueOf(vv.get(i).getUser_id()));
-			jl_friendName.setOpaque(true);
+			jl_friendID.setText(String.valueOf(vv.get(i).getUser_id()));
+			jl_friendID.setOpaque(true);
 			
 			FriendsPage.searchFriends_map.put(vv.get(i).getUser_id(), jp_friendsList);
 			fp.friends_list.add(vv.get(i).getUser_id());
